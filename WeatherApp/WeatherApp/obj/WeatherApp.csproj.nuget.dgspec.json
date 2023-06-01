@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\visual projects\\repos\\weatherAppRepo\\WeatherApp\\WeatherApp\\WeatherApp.csproj": {}
+    "C:\\Users\\KasiaAndSeba\\source\\repos\\wetherApp-apiBased\\WeatherApp\\WeatherApp\\WeatherApp.csproj": {}
   },
   "projects": {
-    "C:\\visual projects\\repos\\weatherAppRepo\\WeatherApp\\WeatherApp\\WeatherApp.csproj": {
+    "C:\\Users\\KasiaAndSeba\\source\\repos\\wetherApp-apiBased\\WeatherApp\\WeatherApp\\WeatherApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\visual projects\\repos\\weatherAppRepo\\WeatherApp\\WeatherApp\\WeatherApp.csproj",
+        "projectUniqueName": "C:\\Users\\KasiaAndSeba\\source\\repos\\wetherApp-apiBased\\WeatherApp\\WeatherApp\\WeatherApp.csproj",
         "projectName": "WeatherApp",
-        "projectPath": "C:\\visual projects\\repos\\weatherAppRepo\\WeatherApp\\WeatherApp\\WeatherApp.csproj",
-        "packagesPath": "C:\\Users\\Kompjuter\\.nuget\\packages\\",
-        "outputPath": "C:\\visual projects\\repos\\weatherAppRepo\\WeatherApp\\WeatherApp\\obj\\",
+        "projectPath": "C:\\Users\\KasiaAndSeba\\source\\repos\\wetherApp-apiBased\\WeatherApp\\WeatherApp\\WeatherApp.csproj",
+        "packagesPath": "C:\\Users\\KasiaAndSeba\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\KasiaAndSeba\\source\\repos\\wetherApp-apiBased\\WeatherApp\\WeatherApp\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Kompjuter\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\KasiaAndSeba\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
