@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WeatherApp.Geo
 {
-    internal class GeocodingOptions
+    public class GeocodingOptions
     {
         public string Name { get; init; }
         public string Language { get; init; }

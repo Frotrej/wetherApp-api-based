@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WeatherApp.Geo
 {
-    internal class LocationData
+    public class LocationData
     {
         public int Id { get; set; }
         public string Name { get; set; }

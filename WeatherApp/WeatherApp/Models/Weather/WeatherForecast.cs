@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace WeatherApp.Weather
 {
-    internal class WeatherForecast
+    public class WeatherForecast
     {
         [JsonPropertyName("latitude")]
         public float Latitude { get; set; }

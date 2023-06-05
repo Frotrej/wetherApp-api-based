@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace WeatherApp.Geo
 {
-    internal class GeocodingApiResponse
+    public class GeocodingApiResponse
     {
         [JsonPropertyName("results")]
         public List<LocationData> Locations { get; set; }

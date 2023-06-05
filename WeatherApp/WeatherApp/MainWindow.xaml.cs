@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WeatherApp.Services;
+using WeatherApp.Weather;
 
 namespace WeatherApp
 {
@@ -23,6 +25,18 @@ namespace WeatherApp
         public MainWindow()
         {
             InitializeComponent();
+            WeatherForecastApi weatherForecastApi = new WeatherForecastApi();
+
+            WeatherForecastOptions weather = new WeatherForecastOptions{ 
+                CurrentWeather=true,
+                Timezone = "Europe/Warsaw",
+                ForecastDay=1,
+                Latitude=49.98f,
+                Longitude=18.95f
+            };
+
+
+            weatherForecastApi.GetCurrentWeather(weather);
         }
     }
 }
