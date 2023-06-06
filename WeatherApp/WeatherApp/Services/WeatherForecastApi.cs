@@ -14,7 +14,7 @@ using WeatherApp.Weather;
 
 namespace WeatherApp.Services
 {
-    public class WeatherForecastApi
+    public class WeatherForecastApi : IDisposable
     {
         private HttpClient httpClient;
         private const string BaseAddress = "https://api.open-meteo.com/v1/forecast?";
@@ -29,16 +29,30 @@ namespace WeatherApp.Services
             httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
 
-        public async void GetCurrentWeather(WeatherForecastOptions options)
+        public async Task GetCurrentWeather(WeatherForecastOptions options)
         {
             var serializedOptions = JsonConvert.SerializeObject(options);
             var deserializedOptions = JsonConvert.DeserializeObject<Dictionary<string, string>>(serializedOptions);
 
-            response = await httpClient.GetAsync(new Uri(QueryHelpers.AddQueryString(BaseAddress, deserializedOptions)));
+            response = await httpClient.GetAsync(QueryHelpers.AddQueryString(BaseAddress, deserializedOptions));
+            
+            if(response.IsSuccessStatusCode)
+            {
+                result = await response.Content.ReadFromJsonAsync<WeatherForecast>();
+            }
+            else
+            {
+                var statusCode = response.StatusCode;
+                var erroMessage = await response.Content.ReadAsStringAsync();
+                //Add Logger in the future
+            }
 
-            result = await response.Content.ReadFromJsonAsync<WeatherForecast>();
         }
 
+        public void Dispose()
+        {
+            httpClient.Dispose();
+        }
     }
 }
 

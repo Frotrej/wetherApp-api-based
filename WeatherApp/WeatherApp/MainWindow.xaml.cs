@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -34,7 +35,6 @@ namespace WeatherApp
                 Latitude=49.98f,
                 Longitude=18.95f
             };
-
 
             weatherForecastApi.GetCurrentWeather(weather);
         }
