@@ -18,8 +18,8 @@ namespace WeatherApp.Services
     {
         private HttpClient httpClient;
         private const string BaseAddress = "https://api.open-meteo.com/v1/forecast?";
-        private string AddressParameters { get; set; } //"latitude=49.98&longitude=18.95";
         private HttpResponseMessage response;
+        private WeatherForecast result;
 
         public WeatherForecastApi()
         {
@@ -29,17 +29,14 @@ namespace WeatherApp.Services
             httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
 
-        //TODO: Europe/Warsaw -> Europer/Warsaw
-        public async void GetCurrentWeather(WeatherForecastOptions weatherForecastOptions)
+        public async void GetCurrentWeather(WeatherForecastOptions options)
         {
-            
-            var json = JsonConvert.SerializeObject(weatherForecastOptions);
-            var dictionary = JsonConvert.DeserializeObject<Dictionary<string, string>>(json);
+            var serializedOptions = JsonConvert.SerializeObject(options);
+            var deserializedOptions = JsonConvert.DeserializeObject<Dictionary<string, string>>(serializedOptions);
 
-            var response = new Uri(QueryHelpers.AddQueryString(BaseAddress, dictionary));
-            //HttpResponseMessage response = await httpClient.GetAsync(dictionary);
+            response = await httpClient.GetAsync(new Uri(QueryHelpers.AddQueryString(BaseAddress, deserializedOptions)));
 
-            //var a = response.Content.ReadAsStringAsync();
+            result = await response.Content.ReadFromJsonAsync<WeatherForecast>();
         }
 
     }
