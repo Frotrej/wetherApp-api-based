@@ -5,7 +5,7 @@ using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
-namespace WeatherApp.Weather
+namespace WeatherApp.Models.Weather.Response
 {
     public class CurrentWeather
     {

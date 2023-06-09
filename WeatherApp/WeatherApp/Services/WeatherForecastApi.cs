@@ -10,7 +10,8 @@ using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using System.Web;
-using WeatherApp.Weather;
+using WeatherApp.Models.Weather.Request;
+using WeatherApp.Models.Weather.Response;
 
 namespace WeatherApp.Services
 {
@@ -19,7 +20,7 @@ namespace WeatherApp.Services
         private HttpClient httpClient;
         private const string BaseAddress = "https://api.open-meteo.com/v1/forecast?";
         private HttpResponseMessage response;
-        private WeatherForecast result;
+        private WeatherForecastResponse result;
 
         public WeatherForecastApi()
         {
@@ -29,7 +30,7 @@ namespace WeatherApp.Services
             httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
 
-        public async Task<WeatherForecast> GetCurrentWeather(WeatherForecastOptions options)
+        public async Task<WeatherForecastResponse> GetCurrentWeather(WeatherForecastRequest options)
         {
             var serializedOptions = JsonConvert.SerializeObject(options);
             var deserializedOptions = JsonConvert.DeserializeObject<Dictionary<string, string>>(serializedOptions);
@@ -38,7 +39,7 @@ namespace WeatherApp.Services
             
             if(response.IsSuccessStatusCode)
             {
-                result = await response.Content.ReadFromJsonAsync<WeatherForecast>();
+                result = await response.Content.ReadFromJsonAsync<WeatherForecastResponse>();
                 return result;
             }
             else
