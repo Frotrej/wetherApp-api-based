@@ -10,6 +10,7 @@ using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using System.Web;
+using WeatherApp.Common;
 using WeatherApp.Models.Weather.Request;
 using WeatherApp.Models.Weather.Response;
 
@@ -32,10 +33,7 @@ namespace WeatherApp.Services
 
         public async Task<WeatherForecastResponse> GetCurrentWeather(WeatherForecastRequest options)
         {
-            var serializedOptions = JsonConvert.SerializeObject(options);
-            var deserializedOptions = JsonConvert.DeserializeObject<Dictionary<string, string>>(serializedOptions);
-
-            response = await httpClient.GetAsync(QueryHelpers.AddQueryString(BaseAddress, deserializedOptions));
+            response = await httpClient.GetAsync(QueryParameterBuilder.BuildQuery(BaseAddress, options));
             
             if(response.IsSuccessStatusCode)
             {
