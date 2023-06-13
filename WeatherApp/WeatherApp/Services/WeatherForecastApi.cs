@@ -19,7 +19,7 @@ namespace WeatherApp.Services
         private HttpClient httpClient;
         private const string BaseAddress = "https://api.open-meteo.com/v1/forecast?";
         private HttpResponseMessage response;
-        private WeatherForecast result;
+        public WeatherForecast Result { get; set; }
 
         public WeatherForecastApi()
         {
@@ -29,16 +29,16 @@ namespace WeatherApp.Services
             httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
 
-        public async Task GetCurrentWeather(WeatherForecastOptions options)
+public async Task GetCurrentWeather(WeatherForecastOptions options)
         {
             var serializedOptions = JsonConvert.SerializeObject(options);
             var deserializedOptions = JsonConvert.DeserializeObject<Dictionary<string, string>>(serializedOptions);
 
             response = await httpClient.GetAsync(QueryHelpers.AddQueryString(BaseAddress, deserializedOptions));
-            
-            if(response.IsSuccessStatusCode)
+
+            if (response.IsSuccessStatusCode)
             {
-                result = await response.Content.ReadFromJsonAsync<WeatherForecast>();
+                Result = await response.Content.ReadFromJsonAsync<WeatherForecast>();
             }
             else
             {

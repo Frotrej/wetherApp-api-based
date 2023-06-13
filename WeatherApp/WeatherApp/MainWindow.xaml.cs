@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -25,6 +27,7 @@ namespace WeatherApp
     {
         public MainWindow()
         {
+            
             InitializeComponent();
             WeatherForecastApi weatherForecastApi = new WeatherForecastApi();
 
@@ -37,6 +40,15 @@ namespace WeatherApp
             };
 
             weatherForecastApi.GetCurrentWeather(weather);
+            Thread.Sleep(5000);
+            RawResult.Text = weatherForecastApi.Result?.ToString();
+            //MessageBox.Show(weatherForecastApi.Result.CurrentWeather.Temperature.ToString());
+            MessageBox.Show("Hello, World!");
+            MessageBox.Show(weatherForecastApi.Result?.ToString());
+
+
         }
+
+
     }
 }
