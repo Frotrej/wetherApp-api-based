@@ -29,7 +29,7 @@ namespace WeatherApp.Services
             httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
 
-public async Task GetCurrentWeather(WeatherForecastOptions options)
+        public async Task GetCurrentWeather(WeatherForecastOptions options)
         {
             var serializedOptions = JsonConvert.SerializeObject(options);
             var deserializedOptions = JsonConvert.DeserializeObject<Dictionary<string, string>>(serializedOptions);

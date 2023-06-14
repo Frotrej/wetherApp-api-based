@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
@@ -25,30 +26,27 @@ namespace WeatherApp
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
+		WeatherForecastApi weatherForecastApi = new WeatherForecastApi();
+		public MainWindow()
         {
-            
             InitializeComponent();
-            WeatherForecastApi weatherForecastApi = new WeatherForecastApi();
-
-            WeatherForecastOptions weather = new WeatherForecastOptions{ 
-                CurrentWeather=true,
-                Timezone = "Europe/Warsaw",
-                ForecastDay=1,
-                Latitude=49.98f,
-                Longitude=18.95f
-            };
-
-            weatherForecastApi.GetCurrentWeather(weather);
-            Thread.Sleep(5000);
-            RawResult.Text = weatherForecastApi.Result?.ToString();
-            //MessageBox.Show(weatherForecastApi.Result.CurrentWeather.Temperature.ToString());
-            MessageBox.Show("Hello, World!");
-            MessageBox.Show(weatherForecastApi.Result?.ToString());
-
-
+            
+           
         }
 
-
-    }
+		private async void Button_Click(object sender, RoutedEventArgs e)
+		{
+			WeatherForecastOptions weather = new WeatherForecastOptions
+			{
+				CurrentWeather = true,
+				Timezone = "Europe/Warsaw",
+				ForecastDay = 1,
+				Latitude = 49.98f,
+				Longitude = 18.95f
+			};
+			await weatherForecastApi.GetCurrentWeather(weather);
+			var a = JsonConvert.SerializeObject(weatherForecastApi.Result, Formatting.Indented);
+			TbResult.Text = a;
+		}
+	}
 }
