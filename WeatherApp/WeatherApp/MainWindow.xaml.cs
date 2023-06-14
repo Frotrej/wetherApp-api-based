@@ -44,9 +44,15 @@ namespace WeatherApp
 				Latitude = 49.98f,
 				Longitude = 18.95f
 			};
-			await weatherForecastApi.GetCurrentWeather(weather);
-			var a = JsonConvert.SerializeObject(weatherForecastApi.Result, Formatting.Indented);
-			TbResult.Text = a;
+			string a;
+
+			using (var client = new WeatherForecastApi()) {
+				string b;
+				await weatherForecastApi.GetCurrentWeather(weather);
+				a = JsonConvert.SerializeObject(weatherForecastApi.Result, Formatting.Indented);
+			};
+
+            TbResult.Text = a;
 		}
 	}
 }

@@ -48,7 +48,6 @@ namespace WeatherApp.Services
             }
 
         }
-
         public void Dispose()
         {
             httpClient.Dispose();
