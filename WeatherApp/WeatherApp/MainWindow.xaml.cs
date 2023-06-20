@@ -1,8 +1,11 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -23,7 +26,8 @@ namespace WeatherApp
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
+		WeatherForecastApi weatherForecastApi = new WeatherForecastApi();
+		public MainWindow()
         {
             InitializeComponent();
             WeatherForecastApi weatherForecastApi = new WeatherForecastApi();

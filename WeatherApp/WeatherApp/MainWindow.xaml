@@ -6,7 +6,14 @@
         xmlns:local="clr-namespace:WeatherApp"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
+    <Grid HorizontalAlignment="Center" Width="800" Height="434" VerticalAlignment="Bottom">
+        <Button x:Name="GetWeather" Content="Pobierz pogodę" HorizontalAlignment="Left" Margin="625,365,0,0" VerticalAlignment="Top" Height="39" Width="137"/>
+        <TextBox x:Name="TempHourly" HorizontalAlignment="Left" Margin="363,36,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="121" Height="368"/>
+        <TextBox x:Name="TempNow" HorizontalAlignment="Left" Margin="504,36,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+
+        <CheckBox Content="Now" HorizontalAlignment="Left" Margin="625,345,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="TbResult" TextWrapping="Wrap" Text="TextBox" Margin="30,32,461,32"/>
+        <Button Content="Button" Margin="537,119,140,214" Click="Button_Click"/>
 
     </Grid>
 </Window>
