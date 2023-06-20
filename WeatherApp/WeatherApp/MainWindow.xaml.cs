@@ -1,7 +1,11 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -12,6 +16,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WeatherApp.Models.Weather.Request;
+using WeatherApp.Services;
 
 namespace WeatherApp
 {
@@ -20,9 +26,20 @@ namespace WeatherApp
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
+		WeatherForecastApi weatherForecastApi = new WeatherForecastApi();
+		public MainWindow()
         {
             InitializeComponent();
+            WeatherForecastApi weatherForecastApi = new WeatherForecastApi();
+
+            WeatherForecastRequest weather = new WeatherForecastRequest{ 
+                CurrentWeather=true,
+                Timezone = "Europe/Warsaw",
+                ForecastDay=1,
+                Latitude=49.98f,
+                Longitude=18.95f
+            };
+            weatherForecastApi.GetCurrentWeather(weather);
         }
     }
 }

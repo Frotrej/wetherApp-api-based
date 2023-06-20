@@ -5,9 +5,9 @@ using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
-namespace WeatherApp.Weather
+namespace WeatherApp.Models.Weather.Response
 {
-    internal class CurrentWeather
+    public class CurrentWeather
     {
         [JsonPropertyName("time")]
         public string Time { get; set; }

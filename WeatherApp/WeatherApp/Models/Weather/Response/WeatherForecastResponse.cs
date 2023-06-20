@@ -5,9 +5,9 @@ using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
-namespace WeatherApp.Weather
+namespace WeatherApp.Models.Weather.Response
 {
-    internal class WeatherForecast
+    public class WeatherForecastResponse
     {
         [JsonPropertyName("latitude")]
         public float Latitude { get; set; }

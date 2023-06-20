@@ -32,7 +32,7 @@ Response:
 }
 ```
 ## GetLocalizaton
-Exampe request:
+Example request:
 https://geocoding-api.open-meteo.com/v1/search?name=Richmond
 
 Example response:
