@@ -5,9 +5,9 @@ using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
-namespace WeatherApp.Geo
+namespace WeatherApp.Models.Geolocalization.Response
 {
-    public class GeocodingApiResponse
+    public class GeolocalizationResponse
     {
         [JsonPropertyName("results")]
         public List<LocationData> Locations { get; set; }

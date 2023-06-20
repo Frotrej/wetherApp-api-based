@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WeatherApp.Geo
+namespace WeatherApp.Models.Geolocalization.Response
 {
     public class LocationData
     {

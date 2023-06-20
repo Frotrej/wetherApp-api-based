@@ -4,17 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WeatherApp.Geo
+namespace WeatherApp.Models.Geolocalization.Request
 {
-    public class GeocodingOptions
+    public class GeolocalizationRequest
     {
         public string Name { get; init; }
         public string Language { get; init; }
 
-        public GeocodingOptions(string name, string language)
+        public GeolocalizationRequest(string name, string language)
         {
-            Name= name;
-            Language= language;
+            Name = name;
+            Language = language;
         }
     }
 }

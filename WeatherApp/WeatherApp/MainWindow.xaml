@@ -13,7 +13,6 @@
 
         <CheckBox Content="Now" HorizontalAlignment="Left" Margin="625,345,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="TbResult" TextWrapping="Wrap" Text="TextBox" Margin="30,32,461,32"/>
-        <Button Content="Button" Margin="537,119,140,214" Click="Button_Click"/>
 
     </Grid>
 </Window>
