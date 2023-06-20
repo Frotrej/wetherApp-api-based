@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,7 +22,7 @@ namespace WeatherApp.Models.Weather.Response
         [JsonPropertyName("timezone")]
         public string Timezone { get; set; }
 
-        [JsonPropertyName("current_weather")]
+        [JsonProperty(PropertyName = "current_weather")]
         public CurrentWeather CurrentWeather { get; set; }
     }
 }

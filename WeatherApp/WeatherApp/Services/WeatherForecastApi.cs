@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.WebUtilities;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,7 +35,9 @@ namespace WeatherApp.Services
             
             if(response.IsSuccessStatusCode)
             {
-                result = await response.Content.ReadFromJsonAsync<WeatherForecastResponse>();
+                //Konwersja ReadAsStringAsync ustandaryzowuje proces
+                var resultAsString = await response.Content.ReadAsStringAsync();
+                result =  JsonConvert.DeserializeObject<WeatherForecastResponse>(resultAsString);
                 return result;
             }
             else
