@@ -1,20 +1,19 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace WeatherApp.Models.Geolocalization.Request
 {
     public class GeolocalizationRequest
     {
-        public string Name { get; init; }
-        public string Language { get; init; }
+        [JsonProperty(PropertyName = "name")]
+        public string Name { get; set; }
 
-        public GeolocalizationRequest(string name, string language)
-        {
-            Name = name;
-            Language = language;
-        }
+        [JsonProperty(PropertyName = "language")]
+        public string Language { get; set; }
     }
 }

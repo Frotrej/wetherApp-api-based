@@ -19,7 +19,7 @@ namespace WeatherApp.Services
     public class GeolocalizationApi : IDisposable
     {
         private HttpClient httpClient;
-        private const string BaseAddress = "https://api.open-meteo.com/v1/forecast?";
+        private const string BaseAddress = "https://geocoding-api.open-meteo.com/v1/search?";
         private HttpResponseMessage response;
         private GeolocalizationResponse result;
 

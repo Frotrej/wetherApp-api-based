@@ -26,20 +26,28 @@ namespace WeatherApp
     /// </summary>
     public partial class MainWindow : Window
     {
-		WeatherForecastApi weatherForecastApi = new WeatherForecastApi();
+        //TODO:
+        //Ustandaryzować proces konwertowania na JSON ponieważ [JsonPropertyName("")] działa w responsie
+        //[JsonProperty(PropertyName = "")] działa w requescie
+        //Wynika to z tego że QueryParameterBuilder i Request działają z biblioteką Newtonsoft.Json; a Response i Api z systemowymi bibliotekami
+        WeatherForecastApi weatherForecastApi = new WeatherForecastApi();
 		public MainWindow()
         {
             InitializeComponent();
-            WeatherForecastApi weatherForecastApi = new WeatherForecastApi();
+        }
 
-            WeatherForecastRequest weather = new WeatherForecastRequest{ 
-                CurrentWeather=true,
+        private async void GetWeather_Click(object sender, RoutedEventArgs e)
+        {
+            WeatherForecastRequest weather = new WeatherForecastRequest
+            {
+                CurrentWeather = true,
                 Timezone = "Europe/Warsaw",
-                ForecastDay=1,
-                Latitude=49.98f,
-                Longitude=18.95f
+                ForecastDay = 1,
+                Latitude = 49.98f,
+                Longitude = 18.95f
             };
-            weatherForecastApi.GetCurrentWeather(weather);
+
+            var a = await weatherForecastApi.GetCurrentWeather(weather);
         }
     }
 }
