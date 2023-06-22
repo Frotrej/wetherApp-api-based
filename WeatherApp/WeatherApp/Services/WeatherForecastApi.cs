@@ -1,11 +1,13 @@
 ﻿using Microsoft.AspNetCore.WebUtilities;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Net.Http.Json;
+using System.Runtime.Intrinsics.X86;
 using System.Threading.Tasks;
 using System.Web;
 using WeatherApp.Common;
@@ -35,7 +37,6 @@ namespace WeatherApp.Services
             
             if(response.IsSuccessStatusCode)
             {
-                //Konwersja ReadAsStringAsync ustandaryzowuje proces
                 var resultAsString = await response.Content.ReadAsStringAsync();
                 result =  JsonConvert.DeserializeObject<WeatherForecastResponse>(resultAsString);
                 return result;

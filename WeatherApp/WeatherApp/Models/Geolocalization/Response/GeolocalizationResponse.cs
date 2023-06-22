@@ -10,7 +10,6 @@ namespace WeatherApp.Models.Geolocalization.Response
 {
     public class GeolocalizationResponse
     {
-        [JsonPropertyName("results")]
         public List<LocationData> Locations { get; set; }
     }
 }

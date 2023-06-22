@@ -10,10 +10,7 @@ namespace WeatherApp.Models.Geolocalization.Request
 {
     public class GeolocalizationRequest
     {
-        [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
-
-        [JsonProperty(PropertyName = "language")]
         public string Language { get; set; }
     }
 }
