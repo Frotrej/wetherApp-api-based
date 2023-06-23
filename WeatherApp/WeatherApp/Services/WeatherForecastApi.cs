@@ -33,12 +33,14 @@ namespace WeatherApp.Services
 
         public async Task<WeatherForecastResponse> GetCurrentWeather(WeatherForecastRequest options)
         {
-            response = await httpClient.GetAsync(QueryParameterBuilder.BuildQuery(BaseAddress, options));
+            response = await httpClient.GetAsync(EndpointBuilder.SetSnakeCaseEndpointNameFormatter(BaseAddress, options));
             
             if(response.IsSuccessStatusCode)
             {
                 var resultAsString = await response.Content.ReadAsStringAsync();
-                result =  JsonConvert.DeserializeObject<WeatherForecastResponse>(resultAsString);
+
+                var result = JsonConvert.DeserializeObject<WeatherForecastResponse>(resultAsString);
+
                 return result;
             }
             else

@@ -33,7 +33,7 @@ namespace WeatherApp.Services
 
         public async Task<GeolocalizationResponse> GetGeolocalization(GeolocalizationRequest options)
         {
-            response = await httpClient.GetAsync(QueryParameterBuilder.BuildQuery(BaseAddress, options));
+            response = await httpClient.GetAsync(EndpointBuilder.SetSnakeCaseEndpointNameFormatter(BaseAddress, options));
             
             if(response.IsSuccessStatusCode)
             {

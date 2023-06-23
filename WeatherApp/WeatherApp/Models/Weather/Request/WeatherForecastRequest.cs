@@ -1,9 +1,12 @@
 ﻿using DataAnnotationsExtensions;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
+using WeatherApp.Abstractions;
 
 namespace WeatherApp.Models.Weather.Request
 {
-    public class WeatherForecastRequest
+    [JsonObject(NamingStrategyType = typeof(SnakeCaseNamingStrategy))]
+    public class WeatherForecastRequest: IApiRequest
     {
         public float Latitude { get; set; }
         public float Longitude { get; set; }

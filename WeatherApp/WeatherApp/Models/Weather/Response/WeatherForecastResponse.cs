@@ -1,14 +1,17 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
+using WeatherApp.Abstractions;
 
 namespace WeatherApp.Models.Weather.Response
 {
-    public class WeatherForecastResponse
+    [JsonObject(NamingStrategyType = typeof(SnakeCaseNamingStrategy))]
+    public class WeatherForecastResponse: IApiResponse
     {
         public float Latitude { get; set; }
         public float Longitude { get; set; }
