@@ -33,11 +33,14 @@ namespace WeatherApp.Services
 
         public async Task<GeolocalizationResponse> GetGeolocalization(GeolocalizationRequest options)
         {
-            response = await httpClient.GetAsync(EndpointBuilder.SetSnakeCaseEndpointNameFormatter(BaseAddress, options));
+            response = await httpClient.GetAsync(EndpointBuilder.BuildEndpoint(BaseAddress, options));
             
             if(response.IsSuccessStatusCode)
             {
-                result = await response.Content.ReadFromJsonAsync<GeolocalizationResponse>();
+                var content = await response.Content.ReadAsStringAsync();
+
+                result = JsonConvert.DeserializeObject<GeolocalizationResponse>(content);
+
                 return result;
             }
             else

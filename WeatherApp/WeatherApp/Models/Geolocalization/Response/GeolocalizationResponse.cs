@@ -10,9 +10,9 @@ using WeatherApp.Abstractions;
 
 namespace WeatherApp.Models.Geolocalization.Response
 {
-    [JsonObject(NamingStrategyType = typeof(SnakeCaseNamingStrategy))]
-    public class GeolocalizationResponse: IApiResponse
+    public class GeolocalizationResponse : IApiResponse
     {
+        [JsonProperty(PropertyName = "results")]
         public List<LocationData> Locations { get; set; }
     }
 }
