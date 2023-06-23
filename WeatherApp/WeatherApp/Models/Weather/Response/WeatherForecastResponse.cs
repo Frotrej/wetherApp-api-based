@@ -1,27 +1,30 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
+using WeatherApp.Abstractions;
 
 namespace WeatherApp.Models.Weather.Response
 {
-    public class WeatherForecastResponse
+    public class WeatherForecastResponse: IApiResponse
     {
-        [JsonPropertyName("latitude")]
+        [JsonProperty(PropertyName = "latitude")]
         public float Latitude { get; set; }
 
-        [JsonPropertyName("longitude")]
+        [JsonProperty(PropertyName = "longitude")]
         public float Longitude { get; set; }
 
-        [JsonPropertyName("elevation")]
+        [JsonProperty(PropertyName = "elevation")]
         public float Elevation { get; set; }
 
-        [JsonPropertyName("timezone")]
+        [JsonProperty(PropertyName = "timezone")]
         public string Timezone { get; set; }
 
-        [JsonPropertyName("current_weather")]
+        [JsonProperty(PropertyName = "current_weather")]
         public CurrentWeather CurrentWeather { get; set; }
     }
 }

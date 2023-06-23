@@ -1,10 +1,13 @@
 ﻿using Microsoft.AspNetCore.WebUtilities;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Net.Http.Json;
+using System.Runtime.Intrinsics.X86;
 using System.Threading.Tasks;
 using System.Web;
 using WeatherApp.Common;
@@ -30,11 +33,14 @@ namespace WeatherApp.Services
 
         public async Task<WeatherForecastResponse> GetCurrentWeather(WeatherForecastRequest options)
         {
-            response = await httpClient.GetAsync(QueryParameterBuilder.BuildQuery(BaseAddress, options));
+            response = await httpClient.GetAsync(EndpointBuilder.BuildEndpoint(BaseAddress,options));
             
             if(response.IsSuccessStatusCode)
             {
-                result = await response.Content.ReadFromJsonAsync<WeatherForecastResponse>();
+                var content = await response.Content.ReadAsStringAsync();
+
+                result = JsonConvert.DeserializeObject<WeatherForecastResponse>(content);
+
                 return result;
             }
             else

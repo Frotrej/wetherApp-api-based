@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,25 +11,25 @@ namespace WeatherApp.Models.Geolocalization.Response
 {
     public class LocationData
     {
-        [JsonPropertyName("ide")]
+        [JsonProperty(PropertyName = "id")]
         public int Id { get; set; }
 
-        [JsonPropertyName("name")]
+        [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
 
-        [JsonPropertyName("latitude")]
+        [JsonProperty(PropertyName = "latitude")]
         public float Latitude { get; set; }
 
-        [JsonPropertyName("longitude")]
+        [JsonProperty(PropertyName = "longitude")]
         public float Longitude { get; set; }
 
-        [JsonPropertyName("country")]
+        [JsonProperty(PropertyName = "country")]
         public string Country { get; set; }
 
-        [JsonPropertyName("country_code")]
+        [JsonProperty(PropertyName = "country_code")]
         public string CountryCode { get; set; }
 
-        [JsonPropertyName("postcodes")]
-        public List<string> Postcodes { get; set; }
+        [JsonProperty(PropertyName = "postcodes")]
+        public List<string> PostCodes { get; set; }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,22 +11,22 @@ namespace WeatherApp.Models.Weather.Response
 {
     public class CurrentWeather
     {
-        [JsonPropertyName("time")]
+        [JsonProperty(PropertyName = "time")]
         public string Time { get; set; }
 
-        [JsonPropertyName("temperature")]
+        [JsonProperty(PropertyName = "temperature")]
         public float Temperature { get; set; }
 
-        [JsonPropertyName("weathercode")]
-        public float Weathercode { get; set; }
+        [JsonProperty(PropertyName ="weathercode")]
+        public float WeatherCode { get; set; }
 
-        [JsonPropertyName("windspeed")]
-        public float Windspeed { get; set; }
+        [JsonProperty(PropertyName = "windspeed")]
+        public float WindSpeed { get; set; }
 
-        [JsonPropertyName("winddirection")]
+        [JsonProperty(PropertyName = "winddirection")]
         public float WindDirection { get; set; }
 
-        [JsonPropertyName("is_day")]
+        [JsonProperty(PropertyName = "is_day")]
         public int IsDay { get; set; }
     }
 }

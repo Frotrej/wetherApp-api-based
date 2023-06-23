@@ -1,9 +1,11 @@
 ﻿using DataAnnotationsExtensions;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
+using WeatherApp.Abstractions;
 
 namespace WeatherApp.Models.Weather.Request
 {
-    public class WeatherForecastRequest
+    public class WeatherForecastRequest: IApiRequest
     {
         [JsonProperty(PropertyName = "latitude")]
         public float Latitude { get; set; }
@@ -17,8 +19,7 @@ namespace WeatherApp.Models.Weather.Request
         [JsonProperty(PropertyName = "timezone")]
         public string Timezone { get; set; }
 
-        [Max(16)]
-        [JsonProperty(PropertyName = "forecast_days")]
+        [JsonProperty(PropertyName = "forecast_day")]
         public int ForecastDay { get; set; }
     }
 }

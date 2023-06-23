@@ -16,6 +16,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WeatherApp.Models.Geolocalization.Request;
 using WeatherApp.Models.Weather.Request;
 using WeatherApp.Services;
 
@@ -26,12 +27,9 @@ namespace WeatherApp
     /// </summary>
     public partial class MainWindow : Window
     {
-        //TODO:
-        //Ustandaryzować proces konwertowania na JSON ponieważ [JsonPropertyName("")] działa w responsie
-        //[JsonProperty(PropertyName = "")] działa w requescie
-        //Wynika to z tego że QueryParameterBuilder i Request działają z biblioteką Newtonsoft.Json; a Response i Api z systemowymi bibliotekami
         WeatherForecastApi weatherForecastApi = new WeatherForecastApi();
-		public MainWindow()
+        GeolocalizationApi geolocalizationApi = new GeolocalizationApi();
+        public MainWindow()
         {
             InitializeComponent();
         }
@@ -46,6 +44,12 @@ namespace WeatherApp
                 Latitude = 49.98f,
                 Longitude = 18.95f
             };
+
+            GeolocalizationRequest geo = new GeolocalizationRequest
+            {
+                Name = "Richmond"
+            };
+            var b = await geolocalizationApi.GetGeolocalization(geo);
 
             var a = await weatherForecastApi.GetCurrentWeather(weather);
         }
