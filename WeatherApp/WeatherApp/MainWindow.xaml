@@ -7,12 +7,31 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid HorizontalAlignment="Center" Width="800" Height="434" VerticalAlignment="Bottom">
-        <Button x:Name="GetWeather" Content="Pobierz pogodę" HorizontalAlignment="Left" Margin="625,365,0,0" VerticalAlignment="Top" Height="39" Width="137" Click="GetWeather_Click"/>
-        <TextBox x:Name="TempHourly" HorizontalAlignment="Left" Margin="363,36,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="121" Height="368"/>
-        <TextBox x:Name="TempNow" HorizontalAlignment="Left" Margin="504,36,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-
-        <CheckBox Content="Now" HorizontalAlignment="Left" Margin="625,345,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="TbResult" TextWrapping="Wrap" Text="TextBox" Margin="30,32,461,32"/>
-
+        <TextBlock TextWrapping="Wrap" Margin="54,40,540,271" Foreground="White" Text="">
+            <TextBlock.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black"/>
+                    <GradientStop Color="#FFBD2222" Offset="1"/>
+                </LinearGradientBrush>
+            </TextBlock.Background></TextBlock>
+        <TextBlock TextWrapping="Wrap" Margin="297,40,297,271" Foreground="White">
+            <TextBlock.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black"/>
+                    <GradientStop Color="#FF24904D" Offset="1"/>
+                </LinearGradientBrush>
+            </TextBlock.Background>
+        </TextBlock>
+        <TextBlock TextWrapping="Wrap" Margin="540,40,54,271" Foreground="White">
+            <TextBlock.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black"/>
+                    <GradientStop Color="#FF5754CA" Offset="1"/>
+                </LinearGradientBrush>
+            </TextBlock.Background>
+        </TextBlock>
+        <Button x:Name="GetWeather_Copy" Content="Pobierz pogodę" HorizontalAlignment="Center" Margin="0,178,0,0" VerticalAlignment="Top" Height="39" Width="136" Click="GetWeather_Click"/>
+        <Button x:Name="GetWeather_Copy1" Content="Pobierz pogodę" HorizontalAlignment="Left" Margin="89,178,0,0" VerticalAlignment="Top" Height="39" Width="136" Click="GetWeather_Click"/>
+        <Button x:Name="GetWeather" Content="Pobierz pogodę" HorizontalAlignment="Left" Margin="574,178,0,0" VerticalAlignment="Top" Height="39" Width="138" Click="GetWeather_Click"/>
     </Grid>
 </Window>

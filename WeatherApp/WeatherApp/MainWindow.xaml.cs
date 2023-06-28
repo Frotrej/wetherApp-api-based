@@ -51,7 +51,7 @@ namespace WeatherApp
                 Name = "Richmond"
             };
             var b = await geolocalizationApi.GetGeolocalization(geo);
-
+            
             var a = await weatherForecastApi.GetCurrentWeather(weather);
         }
     }
