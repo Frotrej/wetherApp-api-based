@@ -33,7 +33,8 @@ namespace WeatherApp
         {
             InitializeComponent();
         }
-
+        //TODO: Request validation in endpoints
+        //Sprawdzic co sie stanie gdy pobiore dane ze stringa i przekonwer4tuje na obiekt gdzie bedzie null
         private async void GetWeather_Click(object sender, RoutedEventArgs e)
         {
             WeatherForecastRequest weather = new WeatherForecastRequest

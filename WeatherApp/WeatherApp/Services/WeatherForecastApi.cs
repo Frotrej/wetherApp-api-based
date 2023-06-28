@@ -33,22 +33,30 @@ namespace WeatherApp.Services
 
         public async Task<WeatherForecastResponse> GetCurrentWeather(WeatherForecastRequest options)
         {
-            response = await httpClient.GetAsync(EndpointBuilder.BuildEndpoint(BaseAddress,options));
-            
-            if(response.IsSuccessStatusCode)
+            try
             {
-                var content = await response.Content.ReadAsStringAsync();
+                response = await httpClient.GetAsync(EndpointBuilder.BuildEndpoint(BaseAddress, options));
 
-                result = JsonConvert.DeserializeObject<WeatherForecastResponse>(content);
+                if (response.IsSuccessStatusCode)
+                {
+                    var content = await response.Content.ReadAsStringAsync();
 
-                return result;
+                    result = JsonConvert.DeserializeObject<WeatherForecastResponse>(content);
+
+                    return result;
+                }
+                else
+                {
+                    //TODO: Logger, Create custom exceptions
+                    var errorMessage = await response.Content.ReadAsStringAsync();
+
+                    throw new Exception("Response status code != 200");
+                }
             }
-            else
+            catch (Exception ex)
             {
-                var statusCode = response.StatusCode;
-                var errorMessage = await response.Content.ReadAsStringAsync();
-                //Add Logger in the future
-                return null;
+                //Logger
+                throw new Exception(ex.Message, ex);
             }
         }
         public void Dispose()

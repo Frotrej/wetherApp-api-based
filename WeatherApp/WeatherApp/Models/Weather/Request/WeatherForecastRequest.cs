@@ -20,6 +20,6 @@ namespace WeatherApp.Models.Weather.Request
         public string Timezone { get; set; }
 
         [JsonProperty(PropertyName = "forecast_day")]
-        public int ForecastDay { get; set; }
+        public int? ForecastDay { get; set; }
     }
 }
